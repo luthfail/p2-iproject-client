@@ -13,14 +13,14 @@ export const useCounterStore = defineStore({
   },
   actions: {
     async fetchData() {
-      const { data } = await axios({
+      const response = await axios({
         method: 'GET',
-        url: "albums/",
+        url: "albums",
         headers : {
           access_token: localStorage.getItem("access_token")
         }
       })
-      this.albumsData = data
+      this.albumsData = response.data
     },
     async fetchCart() {
       const { data } = await axios({

@@ -22,9 +22,9 @@ export const loginStore = defineStore({
                         password: data.password
                     }
                 })
-                console.log(response)
-                localStorage.setItem("access_token", response.data.accessToken);
+                localStorage.setItem("access_token", response.data.access_token);
                 localStorage.setItem("email", response.data.email);
+                localStorage.setItem("name", response.data.name);
                 localStorage.setItem("id", response.data.id);
                 router.push("/");
             } catch (error) {

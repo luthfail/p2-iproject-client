@@ -1,6 +1,5 @@
 <template>
     <div>
-        <Navbar></Navbar>
         <div class="container bg-black flex h-screen">
             <div
                 class="justify-center items-center mx-auto place-self-center h-fit w-full max-w-md px-4 py-8 bg-opacity-25 shadow-sm shadow-red-500 bg-blue-600 rounded-lg">
@@ -50,9 +49,6 @@
                     password: this.password
                 });
         }
-    },
-    components: { 
-        Navbar 
     }
 }
 </script>

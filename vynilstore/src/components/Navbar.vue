@@ -1,32 +1,35 @@
 <template>
-    <nav
-        class="relative w-full flex flex-wrap items-center justify-between py-3 bg-gray-900 text-gray-200 shadow-lg navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid w-full flex flex-wrap items-center justify-between px-6">
-            <button
-                class="navbar-toggler text-gray-200 border-0 hover:shadow-none hover:no-underline py-2 px-2.5 bg-transparent focus:outline-none focus:ring-0 focus:shadow-none focus:no-underline"
-                type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent1"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                testing
-            </button>
-            <div class="collapse navbar-collapse flex-grow items-center" id="navbarSupportedContent1">
-                <a class="text-xl text-white pr-2 font-semibold">Navbar</a>
-                <ul class="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
-                    <li class="nav-item p-2">
-                        <router-link to="/mycart" class="nav-link text-white">My Cart</router-link>
-                    </li>
-                    <li class="nav-item p-2">
-                        <router-link to="/login" class="nav-link text-white opacity-60 hover:opacity-80 focus:opacity-80 p-0">Login</router-link>
-                    </li>
-                    <li class="nav-item p-2">
-                        <router-link to="/register" class="nav-link text-white opacity-60 hover:opacity-80 focus:opacity-80 p-0">Register</router-link>
-                    </li>
-                    <li class="nav-item p-2">
-                        <a @click.prevent="loggout" class="nav-link text-white opacity-60 hover:opacity-80 focus:opacity-80 p-0">Logout</a>
-                    </li>
-                </ul>
-            </div>
+    <div>
+            <nav class="bg-green-700 border-gray-200 px-2 sm:px-4 py-2.5 rounded">
+                <div class="container flex flex-wrap justify-between items-center mx-auto">
+                    <a href="#" class="flex items-center">
+                        <img src="../assets/968063.png" class="mr-3 h-6 sm:h-9">
+                        <span
+                            class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Jajan Vinyl</span>
+                    </a>
+                    <div class="hidden justify-between items-center w-full md:flex md:w-auto md:order-1"
+                        id="mobile-menu-2">
+                        <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+                            <li v-if="access_token">
+                                <h5 class="block py-2 pr-4 pl-3 text-white">Hello, {{name}}</h5>
+                            </li>
+                            <li>
+                                <router-link to="/" class="block py-2 pr-4 pl-3 text-white">Home</router-link>
+                            </li>
+                            <li v-if="!access_token">
+                                <router-link to="/login" class="block py-2 pr-4 pl-3 text-white">Login</router-link>
+                            </li>
+                            <li v-if="!access_token">
+                                <router-link to="/register" class="block py-2 pr-4 pl-3 text-white">Register</router-link>
+                            </li>
+                            <li v-if="access_token">
+                                <a @click.prevent="loggout" href="#" class="block py-2 pr-4 pl-3 text-white">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </div>
-    </nav>
 </template>
 
 <script>
@@ -35,14 +38,15 @@ export default {
     data() {
         return {
             access_token: localStorage.getItem('access_token'),
-            email: localStorage.getItem('email')
+            email: localStorage.getItem('email'),
+            name: localStorage.getItem('name')
         }
     },
     methods: {
         loggout() {
-                localStorage.clear()
-                this.$router.push('/login')
-            }
+            localStorage.clear()
+            this.$router.push('/login')
+        }
     }
 }
 </script>
