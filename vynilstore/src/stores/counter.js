@@ -60,6 +60,7 @@ export const useCounterStore = defineStore({
       }
     },
     async buyCart(){
+      console.log('check')
       try {
         const { data } = await axios({
           method: 'PATCH',
@@ -68,7 +69,7 @@ export const useCounterStore = defineStore({
             access_token: localStorage.getItem("access_token")
           }
         })
-        router.push("/my-cart")
+        return data
       } catch (error) {
         Swal.fire("error", error.response.data.message, 'error')
       }
