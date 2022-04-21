@@ -1,12 +1,15 @@
 import { defineStore } from "pinia";
 import axios from "../axios/axios";
+import router from "../router/index";
+import Swal from "sweetalert2";
 
 export const useCounterStore = defineStore({
   id: "counter",
   state: () => ({
     counter: 0,
     albumsData: [],
-    cartData: []
+    cartData: [],
+    detailData: []
   }),
   getters: {
     doubleCount: (state) => state.counter * 2,
@@ -25,7 +28,7 @@ export const useCounterStore = defineStore({
     async fetchCart() {
       const { data } = await axios({
         method: 'GET',
-        url: "cart/",
+        url: "cart",
         headers : {
           access_token: localStorage.getItem("access_token")
         }
@@ -35,12 +38,50 @@ export const useCounterStore = defineStore({
     async fetchitem(id) {
       const { data } = await axios({
         method: 'GET',
-        url: "albums/" + id,
+        url: `albums/${id}`,
         headers : {
           access_token: localStorage.getItem("access_token")
         }
       })
-      return data
+      this.detailData = data
+    },
+    async addToCart(id) {
+      try {
+        const { data } = await axios({
+          method: 'POST',
+          url: `albums/${id}`,
+          headers : {
+            access_token: localStorage.getItem("access_token")
+          }
+        })
+        router.push("/my-cart")
+      } catch (error) {
+        Swal.fire("error", error.response.data.message, 'error')
+      }
+    },
+    async readCart(){
+      const { data } = await axios({
+        method: 'GET',
+        url: "mycart",
+        headers : {
+          access_token: localStorage.getItem("access_token")
+        }
+      })
+      this.cartData = data
+    },
+    async buyCart(){
+      try {
+        const { data } = await axios({
+          method: 'PATCH',
+          url: "mycart",
+          headers : {
+            access_token: localStorage.getItem("access_token")
+          }
+        })
+        router.push("/my-cart")
+      } catch (error) {
+        Swal.fire("error", error.response.data.message, 'error')
+      }
     }
   },
 });

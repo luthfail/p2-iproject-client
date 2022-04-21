@@ -18,13 +18,26 @@ const router = createRouter({
       name: "Register",
       component: () => import("../views/RegisterPage.vue"),
     },
+    {
+      path: "/detail",
+      name: "Details",
+      component: () => import("../views/DetailPage.vue"),
+    },
+    {
+      path: "/my-cart",
+      name: "MyCart",
+      component: () => import("../views/MyCart.vue"),
+    },
   ],
 });
 
 router.beforeEach((to, from, next) => {
   const authentication = localStorage.getItem("access_token")
-  if (to.name === 'login' && authentication) next({ name: 'home' })
-  else if (to.name === 'register' && authentication) next({ name: 'home' })
+  if (to.name === 'Login' && authentication) next({ name: 'Home' })
+  else if (to.name === 'Register' && authentication) next({ name: 'Home' })
+  else if (to.name === 'Home' && !authentication) next({ name: 'Login' })
+  else if (to.name === 'Details' && !authentication) next({ name: 'Login' })
+  else if (to.name === 'MyCart' && !authentication) next({ name: 'Login' })
   else next()
 })
 

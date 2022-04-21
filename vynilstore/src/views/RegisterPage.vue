@@ -6,7 +6,7 @@
                 <form id="login-form" class="self-center">
                     <div class="flex mb-3 mx-8">
                         <label class="w-36 text-white text-lg">Name</label>
-                        <input v-model="name" class="w-full rounded px-2 py-1" type="text" id="email" placeholder="example@email.com">
+                        <input v-model="name" class="w-full rounded px-2 py-1" type="text" id="email" placeholder="ex: your name">
                     </div>
                     <div class="flex mb-3 mx-8">
                         <label class="w-36 text-white text-lg">Email</label>
