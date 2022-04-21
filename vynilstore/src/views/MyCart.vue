@@ -12,12 +12,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="border-b bg-gray-800 border-gray-700" v-for="history in historyData">
+                    <tr class="border-b bg-gray-800 border-gray-700" v-for="cart in cartData">
                         <td
                             scope="row"
                             class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap"
-                        >{{ cartData.album.name }}</td>
-                        <td class="px-6 py-4">{{ cartData.album.price }}</td>
+                        >{{ cart.album.name }}</td>
+                        <td class="px-6 py-4">{{ cart.album.price }}</td>
                     </tr>
                 </tbody>
             </table>
