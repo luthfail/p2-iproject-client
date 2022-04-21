@@ -1,4 +1,5 @@
 <template>
+<Navbar></Navbar>
     <div>
         <div class="text-2xl text-center m-16">
             <h2 class="text-white">Pending Payment</h2>
@@ -29,20 +30,22 @@
 <script>
 import { mapState, mapActions } from 'pinia';
 import { useCounterStore } from '../stores/counter';
+import Navbar from '../components/Navbar.vue';
 export default {
-    name: 'MyCart',
+    name: "MyCart",
     methods: {
-        ...mapActions(useCounterStore, ['buyCart', 'fetchCart']),
+        ...mapActions(useCounterStore, ["buyCart", "fetchCart"]),
         cart() {
             this.buyCart();
         }
     },
     computed: {
-        ...mapState(useCounterStore, ['cartData'])
+        ...mapState(useCounterStore, ["cartData"])
     },
     created() {
         this.fetchCart();
-    }
+    },
+    components: { Navbar }
 }
 </script>
 

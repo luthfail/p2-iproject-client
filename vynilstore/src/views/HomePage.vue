@@ -1,4 +1,5 @@
 <template>
+<Navbar></Navbar>
     <div class="pl-12 py-14 grid grid-cols-3 gap-1.5 w-full p-2">
         <Cards
         v-for="card in albumsData"
@@ -12,6 +13,7 @@
 import { mapActions, mapState } from "pinia";
 import Cards from "../components/Cards.vue";
 import { useCounterStore } from "../stores/counter";
+import Navbar from "../components/Navbar.vue";
 export default {
     name: 'HomePage',
     methods: {
@@ -24,8 +26,9 @@ export default {
         this.fetchData()
     },
     components: {
-        Cards 
-    }
+    Cards,
+    Navbar
+}
 }
 </script>
 <style>

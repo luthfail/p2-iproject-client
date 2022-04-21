@@ -1,7 +1,7 @@
 <template>
     <div class="container bg-black flex h-screen">
             <div
-                class="justify-center items-center mx-auto place-self-center h-fit w-full max-w-md px-4 py-8 bg-opacity-25 shadow-sm shadow-red-500 bg-blue-600 rounded-lg">
+                class="justify-center items-center mx-auto place-self-center h-fit w-full max-w-md px-4 py-8 bg-opacity-25 shadow-sm shadow-red-500 bg-green-600 rounded-lg">
                 <h3 class="text-center mx-8 my-8 text-3xl text-white">Register</h3>
                 <form id="login-form" class="self-center">
                     <div class="flex mb-3 mx-8">

@@ -1,4 +1,5 @@
 <template>
+<Navbar></Navbar>
     <div class="min-h-screen bg-base-200 container">
         <div class="mt-10 ml-5">
             <img :src="detailData.images" class="max-w-sm rounded-lg shadow-2xl" />
@@ -16,8 +17,9 @@
 <script>
 import { mapStores, mapActions, mapState } from "pinia";
 import { useCounterStore } from "../stores/counter";
+import Navbar from "../components/Navbar.vue";
 export default {
-    name: 'Details',
+    name: "Details",
     methods: {
         ...mapActions(useCounterStore, ["fetchitem"])
     },
@@ -26,7 +28,8 @@ export default {
     },
     created() {
         this.fetchitem();
-    }
+    },
+    components: { Navbar }
 }
 </script>
 
