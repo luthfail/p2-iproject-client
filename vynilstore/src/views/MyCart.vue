@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="text-2xl text-center m-16">
-            <h2>Pending Payment</h2>
+            <h2 class="text-white">Pending Payment</h2>
         </div>
         <div id="main-table" class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left text-gray-50">
@@ -22,7 +22,7 @@
                 </tbody>
             </table>
         </div>
-        <button @click.prevent="cart"></button>
+        <button type="button" class="mt-7 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 " @click.prevent="cart">check out</button>
     </div>
 </template>
 
@@ -32,7 +32,7 @@ import { useCounterStore } from '../stores/counter';
 export default {
     name: 'MyCart',
     methods: {
-        ...mapActions(useCounterStore, ['buyCart', 'readCart']),
+        ...mapActions(useCounterStore, ['buyCart', 'fetchCart']),
         cart() {
             this.buyCart();
         }
@@ -41,7 +41,7 @@ export default {
         ...mapState(useCounterStore, ['cartData'])
     },
     created() {
-        this.readCart();
+        this.fetchCart();
     }
 }
 </script>

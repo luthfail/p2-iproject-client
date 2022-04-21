@@ -25,7 +25,7 @@ import { useCounterStore } from '../stores/counter';
             ...mapActions(useCounterStore, ['fetchitem', 'addToCart']),
             detail(id) {
                 this.fetchitem(id);
-                this.$router.push('/detail');
+                this.$router.push(`/detail/${id}`);
             },
             cart(id) {
                 this.addToCart(id);

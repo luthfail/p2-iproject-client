@@ -28,7 +28,7 @@ export const useCounterStore = defineStore({
     async fetchCart() {
       const { data } = await axios({
         method: 'GET',
-        url: "cart",
+        url: "albums/mycart",
         headers : {
           access_token: localStorage.getItem("access_token")
         }
@@ -59,21 +59,11 @@ export const useCounterStore = defineStore({
         Swal.fire("error", error.response.data.message, 'error')
       }
     },
-    async readCart(){
-      const { data } = await axios({
-        method: 'GET',
-        url: "mycart",
-        headers : {
-          access_token: localStorage.getItem("access_token")
-        }
-      })
-      this.cartData = data
-    },
     async buyCart(){
       try {
         const { data } = await axios({
           method: 'PATCH',
-          url: "mycart",
+          url: "albums/mycart",
           headers : {
             access_token: localStorage.getItem("access_token")
           }
